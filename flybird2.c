@@ -1,7 +1,4 @@
 //gcc -version == 7.3.0
-//1，碰撞体积与实际画面的问题
-//2.成绩计算的问题（次要）
-//4.小鸟与上柱子的碰撞无效
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -11,7 +8,7 @@
 
 #define GAP 9//柱子上下间隔
 #define DIS 20//柱子左右间隔
-#define BOOL int
+#define BOOL int//无他，布尔类型用起来更直观些
 #define TRUE 1
 #define FALSE 0
 #define upper_boundry 1//上边界
@@ -19,12 +16,12 @@
 
 
 typedef struct bird
-{
+{   
     COORD pos;//COORD是表示坐标的结构体.
-    int score;
+    int score;          
 }BIRD;
 
-void CheckWall(COORD wall[]); //显示柱子
+void CheckWall(COORD wall[], BIRD * bird); //显示柱子
 void PrtBird(BIRD * bird); //显示小鸟
 int CheckWin(COORD * wall, BIRD * bird);//检测小鸟是否碰墙或者超出上下边界。
 void Begin(BIRD * bird);//显示上下边界和分数
@@ -43,9 +40,9 @@ int main()
     while (CheckWin(wall, &bird))//游戏循环
     {       
         Begin(&bird);//刷新
-        CheckWall(wall);//显示柱子
+        CheckWall(wall, &bird);//显示柱子
         PrtBird(&bird);//显示小鸟
-        Sleep(200);
+        Sleep(200);//古希腊掌管帧率的神
 
         if (kbhit())
         {
@@ -70,7 +67,7 @@ int main()
   
 //函数功能：显示/刷新柱子
 //参数：柱子位置的列表
-void CheckWall(COORD wall[])
+void CheckWall(COORD wall[], BIRD * bird)
 {
     int i;
     HideCursor();
@@ -82,6 +79,7 @@ void CheckWall(COORD wall[])
         wall[0] = wall[1];//最左侧柱子消失，第二个柱子变成第一个
         wall[1] = wall[2];//第三个->第二个
         wall[2] = temp;//新产生的变成第三个
+        (bird -> score)++;//写在这里，每次柱子刷新，分数加一（成绩记录的是越过的柱子数量） 
     }  
 
     for (i = 0; i < 3; ++i)
@@ -133,7 +131,7 @@ int CheckWin (COORD * wall, BIRD * bird)
     {
         return 0;//小鸟的位置超出上下边界,则返回0
     }
-    (bird -> score)++;//分数加一 
+    //(bird -> score)++;//写在这里，每刷新一次分数加一 
 
     return 1;      
 }
