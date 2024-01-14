@@ -124,7 +124,7 @@ int CheckWin (COORD * wall, BIRD * bird)
 {
     if (bird->pos.X >= wall->X && bird -> pos.X < wall -> X + 5)//小鸟的横坐标进入柱子坐标范围
     {
-        if (bird->pos.X <= wall->Y || bird->pos.Y >= wall->Y + GAP)
+        if (bird->pos.Y <= wall->Y || bird->pos.Y >= wall->Y + GAP)
         {
             return 0;//小鸟的纵坐标碰到上下柱子,则返回0
         }
