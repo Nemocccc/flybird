@@ -8,5 +8,5 @@ cmake .
 make
 ```
 <br>
-download the zip package
-[flybird-1.1.0-win64.zip](https://raw.githubusercontent.com/Nemocccc/flybird/main/flybird_cpp/_CPack_Packages/win64/ZIP/flybird-1.1.0-win64.zip)
+<!-- download the zip package
+[`flybird-1.1.0-win64.zip`](https://raw.githubusercontent.com/Nemocccc/flybird/main/flybird_cpp/_CPack_Packages/win64/ZIP/flybird-1.1.0-win64.zip) -->
