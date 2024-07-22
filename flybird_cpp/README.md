@@ -9,4 +9,4 @@ make
 ```
 <br>
 download the zip package
-[flybird-1.1.0-win64.zip](flybird-1.1.0-win64.zip)
+[flybird-1.1.0-win64.zip](_CPack_Packages\win64\ZIP\flybird-1.1.0-win64.zip)
